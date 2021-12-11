@@ -1,5 +1,5 @@
 import {gql,useQuery} from '@apollo/client';
-import Dishes from "./dishes"
+// import Dishes from "./dishes"
 import {useContext, useState} from 'react';
 
 
@@ -45,9 +45,9 @@ let searchQuery = data.restaurants.filter((res) =>{
 let restId = searchQuery[0].id
  
 // definet renderer for Dishes
-  const renderDishes = (restaurantID) => {
-    return (<Dishes restId={restaurantID}> </Dishes>)
-  };
+  // const renderDishes = (restaurantID) => {
+  //   return (<Dishes restId={restaurantID}> </Dishes>)
+  // };
 if(searchQuery.length > 0){
   const restList = searchQuery.map((res) => (
     <Col xs="6" sm="4" key={res.id}>
@@ -79,7 +79,7 @@ if(searchQuery.length > 0){
     </Row>
   
     <Row xs='3'>
-    {renderDishes(restaurantID)}
+    {/* {renderDishes(restaurantID)} */}
     </Row>
  
     </Container>
