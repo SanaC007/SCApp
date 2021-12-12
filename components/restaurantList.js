@@ -2,7 +2,7 @@ import { gql, useQuery } from '@apollo/client';
 import Link from 'next/link';
 // import Dishes from "./dishes"
 import { useContext, useState } from 'react';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import AppContext from './context';
 import {
   Button,
@@ -66,7 +66,7 @@ function RestaurantList(props) {
           <Link
               key={res.name}
               as={`/restaurants/${res.id}`}
-              href={`/restaurants/[dishes]?id=${res.name}`}
+              href={`/restaurants/[dishes]?id=${res.id}`}
             >
             {/* <Button color="info" onClick={() => setRestaurantID(res.id)}>
               {res.name}
@@ -83,7 +83,7 @@ function RestaurantList(props) {
       <Container>
         <Row xs="3">{restList}</Row>
 
-        <Row xs="3">{/* {renderDishes(restaurantID)} */}</Row>
+        {/* <Row xs="3">{renderDishes(restaurantID)}</Row> */}
       </Container>
     );
   } else {
