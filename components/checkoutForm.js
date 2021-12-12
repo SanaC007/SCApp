@@ -1,20 +1,20 @@
-
-import React, { useState, useContext } from "react";
-import { FormGroup, Label, Input } from "reactstrap";
-import fetch from "isomorphic-fetch";
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import CardSection from "./cardSection";
-import AppContext from "./context";
-import Cookies from "js-cookie";
+import React, { useState, useContext } from 'react';
+import { FormGroup, Label, Input } from 'reactstrap';
+import fetch from 'isomorphic-fetch';
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import CardSection from './cardSection';
+import AppContext from './context';
+import Cookies from 'js-cookie';
+// import { FormErrors } from './FormErrors';
 
 function CheckoutForm() {
   const [data, setData] = useState({
-    address: "",
-    city: "",
-    state: "",
-    stripe_id: "",
+    address: '',
+    city: '',
+    state: '',
+    stripe_id: '',
   });
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const stripe = useStripe();
   const elements = useElements();
   const appContext = useContext(AppContext);
@@ -35,15 +35,15 @@ function CheckoutForm() {
     // // Pass the Element directly to other Stripe.js methods:
     // // e.g. createToken - https://stripe.com/docs/js/tokens_sources/create_token?type=cardElement
     // get token back from stripe to process credit card
-    const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
+    const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:1337';
 
     const token = await stripe.createToken(cardElement);
-    const userToken = Cookies.get("token");
+    const userToken = Cookies.get('token');
     const response = await fetch(`${API_URL}/orders`, {
-      method: "POST",
+      method: 'POST',
       headers: userToken && { Authorization: `Bearer ${userToken}` },
       body: JSON.stringify({
-        amount: Number(Math.round(appContext.cart.total + "e2") + "e-2"),
+        amount: Number(Math.round(appContext.cart.total + 'e2') + 'e-2'),
         dishes: appContext.cart.items,
         address: data.address,
         city: data.city,
@@ -52,9 +52,12 @@ function CheckoutForm() {
       }),
     });
 
-    if (!response.ok) {
+    if (response.ok) {
+      alert('Thank you for your order!');
+      window.location = '/';
+    } else {
       setError(response.statusText);
-      console.log("SUCCESS")
+      console.log('ERROR');
     }
 
     // OTHER stripe methods you can use depending on app
@@ -74,20 +77,20 @@ function CheckoutForm() {
 
   return (
     <div className="paper">
-      <h5>Your information:</h5>
+      <h5>PAYMENT DETAILS</h5>
       <hr />
-      <FormGroup style={{ display: "flex" }}>
-        <div style={{ flex: "0.90", marginRight: 10 }}>
+      <FormGroup style={{ display: 'flex' }}>
+        <div style={{ flex: '0.90', marginRight: 10 }}>
           <Label>Address</Label>
           <Input name="address" onChange={onChange} />
         </div>
       </FormGroup>
-      <FormGroup style={{ display: "flex" }}>
-        <div style={{ flex: "0.65", marginRight: "6%" }}>
+      <FormGroup style={{ display: 'flex' }}>
+        <div style={{ flex: '0.65', marginRight: '6%' }}>
           <Label>City</Label>
           <Input name="city" onChange={onChange} />
         </div>
-        <div style={{ flex: "0.25", marginRight: 0 }}>
+        <div style={{ flex: '0.25', marginRight: 0 }}>
           <Label>State</Label>
           <Input name="state" onChange={onChange} />
         </div>
@@ -182,7 +185,7 @@ function CheckoutForm() {
             max-width: 500px;
             padding: 10px 14px;
             font-size: 1em;
-            font-family: "Source Code Pro", monospace;
+            font-family: 'Source Code Pro', monospace;
             box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px,
               rgba(0, 0, 0, 0.0196078) 0px 1px 0px;
             border: 0;

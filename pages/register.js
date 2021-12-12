@@ -1,6 +1,4 @@
-/* /pages/register.js */
-
-import React, { useState, useContext } from "react";
+import React, { useState, useContext } from 'react';
 
 import {
   Container,
@@ -11,12 +9,12 @@ import {
   FormGroup,
   Label,
   Input,
-} from "reactstrap";
-import { registerUser } from "../components/auth";
-import AppContext from "../components/context";
+} from 'reactstrap';
+import { registerUser } from '../components/auth';
+import AppContext from '../components/context';
 
 const Register = () => {
-  const [data, setData] = useState({ email: "", username: "", password: "" });
+  const [data, setData] = useState({ email: '', username: '', password: '' });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
   const appContext = useContext(AppContext);
@@ -31,13 +29,13 @@ const Register = () => {
             <section className="wrapper">
               {Object.entries(error).length !== 0 &&
                 error.constructor === Object &&
-                error.message.map((error) => {
+                error.message.map(error => {
                   return (
                     <div
                       key={error.messages[0].id}
                       style={{ marginBottom: 10 }}
                     >
-                      <small style={{ color: "red" }}>
+                      <small style={{ color: 'red' }}>
                         {error.messages[0].message}
                       </small>
                     </div>
@@ -46,40 +44,40 @@ const Register = () => {
               <Form>
                 <fieldset disabled={loading}>
                   <FormGroup>
-                    <Label>Username:</Label>
+                    <Label>User Name:</Label>
                     <Input
                       disabled={loading}
-                      onChange={(e) =>
+                      onChange={e =>
                         setData({ ...data, username: e.target.value })
                       }
                       value={data.username}
                       type="text"
                       name="username"
-                      style={{ height: 50, fontSize: "1.2em" }}
+                      style={{ height: 50, fontSize: '1.2em' }}
                     />
                   </FormGroup>
                   <FormGroup>
                     <Label>Email:</Label>
                     <Input
-                      onChange={(e) =>
+                      onChange={e =>
                         setData({ ...data, email: e.target.value })
                       }
                       value={data.email}
                       type="email"
                       name="email"
-                      style={{ height: 50, fontSize: "1.2em" }}
+                      style={{ height: 50, fontSize: '1.2em' }}
                     />
                   </FormGroup>
                   <FormGroup style={{ marginBottom: 30 }}>
                     <Label>Password:</Label>
                     <Input
-                      onChange={(e) =>
+                      onChange={e =>
                         setData({ ...data, password: e.target.value })
                       }
                       value={data.password}
                       type="password"
                       name="password"
-                      style={{ height: 50, fontSize: "1.2em" }}
+                      style={{ height: 50, fontSize: '1.2em' }}
                     />
                   </FormGroup>
                   <FormGroup>
@@ -89,26 +87,28 @@ const Register = () => {
                       </a>
                     </span>
                     <Button
-                      style={{ float: "right", width: 120 }}
+                      style={{ float: 'right', width: 120 }}
                       color="primary"
                       disabled={loading}
                       onClick={() => {
                         setLoading(true);
                         registerUser(data.username, data.email, data.password)
-                          .then((res) => {
+                          .then(res => {
                             // set authed user in global context object
                             appContext.setUser(res.data.user);
                             setLoading(false);
-                            console.log(`registered user: ${JSON.stringify(res.data)}`)
+                            console.log(
+                              `registered user: ${JSON.stringify(res.data)}`
+                            );
                           })
-                          .catch((error) => {
-                            console.log(`error in register: ${error}`)
+                          .catch(error => {
+                            console.log(`error in register: ${error}`);
                             //setError(error.response.data);
                             setLoading(false);
                           });
                       }}
                     >
-                      {loading ? "Loading.." : "Submit"}
+                      {loading ? 'Loading..' : 'Submit'}
                     </Button>
                   </FormGroup>
                 </fieldset>
