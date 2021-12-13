@@ -10,7 +10,7 @@
         "srv": "${process.env.DATABASE_SRV || true}",
         "database": "${process.env.DATABASE_NAME || 'strapi'}",
         "username": "${process.env.DATABASE_USERNAME || 'sanajc23@gmail.com'}",
-        "password": "${process.env.DATABASE_PASSWORD || 'Strapi1001!'}",
+        "password": "${process.env.DATABASE_PASSWORD || 'Strapi1001!'}"
       },
       "options": {
         "ssl": "${process.env.DATABASE_SSL || false}",
