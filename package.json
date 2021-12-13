@@ -4,7 +4,7 @@
   "private": true,
   "cacheDirectories": [".next/cache"],
   "scripts": {
-    "dev": "next dev -p $PORT",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start -p $PORT"
   },
