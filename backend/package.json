@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
+  "cacheDirectories": [".next/cache"],
   "scripts": {
     "develop": "strapi develop -p $PORT",
     "start": "strapi start",
