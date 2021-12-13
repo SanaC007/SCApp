@@ -5,8 +5,8 @@
   "description": "A Strapi application",
   "scripts": {
     "develop": "strapi develop -p $PORT",
-    "start": "strapi start -p $PORT",
-    "build": "strapi build -p $PORT",
+    "start": "strapi start",
+    "build": "strapi build",
     "strapi": "strapi",
     "lint": "eslint ."
   },
