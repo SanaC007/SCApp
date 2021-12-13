@@ -7,11 +7,10 @@
         "client": "sqlite",
         "host": "${process.env.DATABASE_HOST || '127.0.0.1'}",
         "port": "${process.env.DATABASE_PORT || 27017}",
-        "srv": "${process.env.DATABASE_SRV || false}",
+        "srv": "${process.env.DATABASE_SRV || true}",
         "database": "${process.env.DATABASE_NAME || 'strapi'}",
         "username": "${process.env.DATABASE_USERNAME || 'sanajc23@gmail.com'}",
         "password": "${process.env.DATABASE_PASSWORD || 'Strapi1001!'}",
-        "ssl": "${process.env.DATABASE_SSL || false}"
       },
       "options": {
         "ssl": "${process.env.DATABASE_SSL || false}",
