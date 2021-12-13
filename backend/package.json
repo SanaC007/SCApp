@@ -5,7 +5,7 @@
   "description": "A Strapi application",
   "cacheDirectories": [".next/cache"],
   "scripts": {
-    "develop": "strapi develop -p $PORT",
+    "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
