@@ -2,7 +2,9 @@
   "name": "restaurant-app",
   "version": "0.1.0",
   "private": true,
-  "cacheDirectories": [".next/cache"],
+  "cacheDirectories": [
+    ".next/cache"
+  ],
   "scripts": {
     "dev": "next dev -p $PORT",
     "build": "next build",
@@ -17,6 +19,8 @@
     "isomorphic-fetch": "^3.0.0",
     "js-cookie": "^2.2.1",
     "next": "9.5.5",
+    "pg": "^8.7.1",
+    "pg-connection-string": "^2.5.0",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "reactstrap": "^8.10.1"
